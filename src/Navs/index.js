@@ -43,7 +43,7 @@ function Navs() {
           path="/candidate/auth"
           element={<AuthenticationPage type="candidate" />}
         />
-        <Route element={<ProtectedCandidateRoutes />}>
+        {/* <Route element={<ProtectedCandidateRoutes />}> */}
           <Route
             path="/candidate/onboarding"
             element={<CandidateOnboarding />}
@@ -58,12 +58,12 @@ function Navs() {
             path="/candidate/conversation"
             element={<CandidateConversation />}
           />
-        </Route>
+        {/* </Route> */}
         <Route
           path="/employer/auth"
           element={<AuthenticationPage type="employer" />}
         />
-        <Route element={<ProtectedEmployerRoutes />}>
+        {/* <Route element={<ProtectedEmployerRoutes />}> */}
           <Route path="/employer/onboarding" element={<EmployerOnboarding />} />
           <Route path="/employer/profile" element={<EmployerProfile />} />
           <Route path="/employer/jobs" element={<EmployerJobs />} />
@@ -72,7 +72,7 @@ function Navs() {
             path="/employer/conversation"
             element={<EmployerConversation />}
           />
-        </Route>
+        {/* </Route> */}
       </Routes>
     </Router>
   );
