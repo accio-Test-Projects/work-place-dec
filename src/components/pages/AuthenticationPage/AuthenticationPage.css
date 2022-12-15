@@ -1,0 +1,40 @@
+.auth-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+}
+.auth-container>h1{
+    font-size: clamp(50px, 4.8vw, 60px);
+    font-weight: 600;
+    text-transform: uppercase;
+    max-width: 80%;
+    text-align: center;
+}
+.auth-container>h2{
+   font-size: clamp(20px, 2.7vw, 40px);
+}
+.auth-container >button{
+  background: no-repeat;
+  border: 1px solid #00000030;
+  border-radius: 30px;
+  padding: 3px 26px;
+  min-width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 20px;
+  font-weight: 600;
+
+}
+.auth-container >button:hover{
+  background: #4540DB;
+  color: #fff;
+}
+
+.auth-container >button >img{
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}

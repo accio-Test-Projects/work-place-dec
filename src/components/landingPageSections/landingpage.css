@@ -28,5 +28,54 @@
 
 }
 
+.onePlateform-container >h1{
+    font-style: normal;
+font-weight: 500;
+font-size: clamp(25px, 3.4vw, 50px);
+max-width: 50%;
+margin: auto;
+text-align: center;
+
+color: #000000;
+}
+.onePlateform-container >h1 >span{
+    color: #4540DB;
+}
+
+.solutionCard-container{
+    height: 148px;
+   max-width: 90%;
+   margin: auto;
+    background: #FFFFFF;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 1rem;
+    /* margin: 10px; */
+}
+.solutionCard-container:hover{
+    background: #4540DB;
+   color: #FFFFFF !important;
+}
+.solutionCard-title :first-child{
+    font-weight: 400;
+    color: inherit;
+    font-size: clamp(15px, 1.7vw, 25px);
+    line-height: clamp(15px, 1.8vw, 29px);
+    color: #000000;
+}
+.solutionCard-title :first-child:hover{
+    color: #FFFFFF;
+}
+.solutionCard-title :last-child{
+    font-style: normal;
+    font-weight: 400;
+    font-size: clamp(10px, 1.2vw, 18px);
+    color: #000000;
+}
+
 /* (max-size/design width) *100 */
-/* (70/1440)*100 vw */
+/* (50/1440)*100 vw */
