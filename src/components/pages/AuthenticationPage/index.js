@@ -15,6 +15,7 @@ const signIn = () => {
     const token = credential.accessToken;
     // The signed-in user info.
     const user = result.user;
+    localStorage.setItem('user',JSON.stringify(user))
     if(type==='candidate'){
 
       //user exist
@@ -47,6 +48,7 @@ const signIn = () => {
       <button onClick={signIn} >
         <img alt="icon" src={googleIcon} /> <div>Sign In With Google</div>
       </button>
+
     </div>
   );
 }
@@ -57,6 +59,7 @@ export default AuthenticationPage;
 // if user is candidate and not exist redirect to candidate onboarding page
 // if user is employer and exist redirect to employer profile page
 // if user is employer and not exist redirect to employer onboarding page
+
 
 //if user is candidate and exist and he is tring to signIn as employer show him error message
 //if user is employer and exist and he is tring to signIn as candidate show him error message

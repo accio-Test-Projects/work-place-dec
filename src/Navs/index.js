@@ -19,6 +19,8 @@ import EmployerProfile from "../components/pages/employerPages/EmployerProfile";
 import EmployerJobs from "../components/pages/employerPages/EmployerJobs";
 import EmployerApplicants from "../components/pages/employerPages/EmployerApplicants";
 import EmployerConversation from "../components/pages/employerPages/EmployerConversation";
+import EmployerHoc from "../HOC/EmployerHoc";
+import CandidateHoc from "../HOC/CandidateHoc";
 
 function Navs() {
   const ProtectedCandidateRoutes = () => {
@@ -44,36 +46,85 @@ function Navs() {
           element={<AuthenticationPage type="candidate" />}
         />
         {/* <Route element={<ProtectedCandidateRoutes />}> */}
-          <Route
-            path="/candidate/onboarding"
-            element={<CandidateOnboarding />}
-          />
-          <Route path="/candidate/profile" element={<CandidateProfile />} />
-          <Route path="/candidate/jobs" element={<CandidateJobs />} />
-          <Route
-            path="/candidate/applications"
-            element={<CandidateApplication />}
-          />
-          <Route
-            path="/candidate/conversation"
-            element={<CandidateConversation />}
-          />
+        <Route path="/candidate/onboarding" element={<CandidateOnboarding />} />
+        <Route
+          path="/candidate/profile"
+          element={
+            <CandidateHoc>
+              <CandidateProfile />
+            </CandidateHoc>
+          }
+        />
+        <Route
+          path="/candidate/jobs"
+          element={
+            <CandidateHoc>
+              <CandidateJobs />
+            </CandidateHoc>
+          }
+        />
+        <Route
+          path="/candidate/applications"
+          element={
+            <CandidateHoc>
+              <CandidateApplication />
+            </CandidateHoc>
+          }
+        />
+        <Route
+          path="/candidate/conversation"
+          element={
+            <CandidateHoc>
+              <CandidateConversation />
+            </CandidateHoc>
+          }
+        />
         {/* </Route> */}
+      </Routes>
+      <Routes>
         <Route
           path="/employer/auth"
           element={<AuthenticationPage type="employer" />}
         />
         {/* <Route element={<ProtectedEmployerRoutes />}> */}
-          <Route path="/employer/onboarding" element={<EmployerOnboarding />} />
-          <Route path="/employer/profile" element={<EmployerProfile />} />
-          <Route path="/employer/jobs" element={<EmployerJobs />} />
-          <Route path="/employer/applicants" element={<EmployerApplicants />} />
-          <Route
-            path="/employer/conversation"
-            element={<EmployerConversation />}
-          />
-        {/* </Route> */}
+
+        <Route path="/employer/onboarding" element={<EmployerOnboarding />} />
+
+        <Route
+          path="/employer/profile"
+          element={
+            <EmployerHoc>
+              <EmployerProfile />
+            </EmployerHoc>
+          }
+        />
+        <Route
+          path="/employer/jobs"
+          element={
+            <EmployerHoc>
+              <EmployerJobs />
+            </EmployerHoc>
+          }
+        />
+        <Route
+          path="/employer/applicants"
+          element={
+            <EmployerHoc>
+              <EmployerApplicants />
+            </EmployerHoc>
+          }
+        />
+        <Route
+          path="/employer/conversation"
+          element={
+            <EmployerHoc>
+              <EmployerConversation />
+            </EmployerHoc>
+          }
+        />
       </Routes>
+
+      {/* </Route> */}
     </Router>
   );
 }

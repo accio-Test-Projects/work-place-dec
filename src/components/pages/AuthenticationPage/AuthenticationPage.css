@@ -38,3 +38,16 @@
   height: 40px;
   margin-right: 10px;
 }
+.test{
+  height: 100px;
+    width: 100px;
+    border: 1px solid;
+    padding: 10px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.test:hover{
+  background-size:130%;
+  transition: background-size 0.5s ease-in-out;
+}
