@@ -1,0 +1,51 @@
+.form-container{
+  max-width: 95%;
+    background: #fff;
+    /* min-height: 85vh; */
+    margin: 20px auto;
+    padding: 20px;
+
+}
+.text-label{
+  display: flex;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 10px;
+  text-transform: capitalize;
+}
+.skills-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  gap: 10px;
+  margin-top: 10px;
+}
+.skills-container div{
+  display: flex;
+  align-items: flex-start;
+  font-weight: 700;
+  border: 1px solid #00000033;
+  border-radius: 10px;
+  padding: 5px;
+  font-size: 15px;
+
+}
+.publish-btn{
+  background: #7F31D2;
+  border-radius: 8px;
+  color: white;
+  padding: 10px 25px;
+  float: right;
+  margin: 10px;
+  border: none;
+  font-size: 15px;
+
+}
+
+@media screen and (max-width: 900px) {
+  .publish-btn{
+   float: unset !important;
+   width: 100%;
+  }
+  
+}

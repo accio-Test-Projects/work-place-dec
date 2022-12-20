@@ -1,0 +1,72 @@
+.sidebar-container{
+  background: #FFFFFF;
+box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+height: 85vh;
+overflow-y: scroll;
+padding: 20px;
+
+}
+
+.post-job-btn{
+  border: 1.5px solid rgba(0, 0, 0, 0.368);
+  border-radius: 19px;
+  width: 308px;
+  height: 121px;
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 34px;
+  color: #7F31D2;
+  margin: auto;
+
+}
+.post-job-btn:hover{
+  background: rgba(127, 49, 210, 0.05) !important;
+  border: 1.5px solid #7F31D2 !important;
+}
+.post-job-btn p{
+  font-weight: 500;
+font-size: 15px;
+line-height: 18px;
+
+color: #8C8C8C;
+
+}
+.sidebar-card-container{
+  padding: 20px 30px;
+  display: grid;
+  text-align: left;
+  grid-gap: 5px;
+}
+.sidebar-card-container-selected{
+  background: #F2F2F2;
+  border-radius: 10px;
+  border-left: 5px solid #7F31D2;
+  border-right: 5px solid #7F31D2;
+
+}
+.sidebar-card-container hr{
+  width: 100%;
+  margin-top: 30px;
+}
+.sidebar-card-container :first-child{
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  
+  color: #959595;
+}
+.sidebar-card-container :nth-child(2){
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 26px;
+  
+  color: #000000;
+}
+.sidebar-card-container :nth-child(3){
+  font-weight: 500;
+font-size: 16px;
+line-height: 19px;
+
+color: #959595;
+
+}
