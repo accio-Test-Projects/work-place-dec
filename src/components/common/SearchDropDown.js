@@ -6,10 +6,12 @@ function SearchDropDown({
   dropDownList,
   val,
   onChange,
+  disabled,
   required
 }) {
   return (
     <Autocomplete
+    disabled={disabled}
       disablePortal
       onChange={(event, newValue) => {
         onChange(newValue.value);

@@ -44,6 +44,7 @@ function CustomDropDown({
   val,
   onChange,
   required,
+  disabled
 }) {
   const theme = useTheme();
 
@@ -56,6 +57,7 @@ function CustomDropDown({
     <div>
       <FormControl sx={{ m: 1, width: 300 }}>
         <Select
+        disabled={disabled}
         required={required}
           id="demo-simple-select"
           value={val}
