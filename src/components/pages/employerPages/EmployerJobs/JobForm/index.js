@@ -76,7 +76,6 @@ function JobForm({ setMobileSectionState, selectedJob }) {
         });
         Notification({ message: "Job Posted Successfully", type: "success" });
       }
-    
     } catch (err) {
       Notification({ message: "something went wrong", type: "error" });
     }

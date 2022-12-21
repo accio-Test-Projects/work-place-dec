@@ -55,10 +55,8 @@ function CustomDropDown({
   return (
     <div>
       <FormControl sx={{ m: 1, width: 300 }}>
-        <InputLabel id="demo-multiple-name-label">Name</InputLabel>
         <Select
         required={required}
-          labelId="demo-simple-select-label"
           id="demo-simple-select"
           value={val}
           
