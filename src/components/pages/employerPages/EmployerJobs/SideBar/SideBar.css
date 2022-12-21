@@ -36,6 +36,7 @@ color: #8C8C8C;
   display: grid;
   text-align: left;
   grid-gap: 5px;
+  cursor: pointer;
 }
 .sidebar-card-container-selected{
   background: #F2F2F2;

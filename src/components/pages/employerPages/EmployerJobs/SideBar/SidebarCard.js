@@ -1,21 +1,20 @@
-import React from 'react'
+import React from "react";
 
-function SidebarCard({
-  updateAt,
-  jobTitle,
-  location,
-  i
-}) {
+function SidebarCard({ job, setSelectedJob, selectedJob }) {
+  const { jobTitle, jobLocation, createdAt } = job;
   return (
-    <div 
-    className={`sidebar-card-container ${i==2&& `sidebar-card-container-selected`} `}
+    <div
+      onClick={() => setSelectedJob(job)}
+      className={`sidebar-card-container ${
+        job.job_id === selectedJob?.job_id && `sidebar-card-container-selected`
+      } `}
     >
-      <div>{updateAt}</div>
+      <div>{createdAt.toDate().toDateString()}</div>
       <div>{jobTitle}</div>
-      <div>{location}</div>
+      <div>{jobLocation}</div>
       <hr></hr>
     </div>
-  )
+  );
 }
 
-export default SidebarCard
+export default SidebarCard;

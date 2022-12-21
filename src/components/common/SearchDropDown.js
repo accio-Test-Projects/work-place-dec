@@ -6,6 +6,7 @@ function SearchDropDown({
   dropDownList,
   val,
   onChange,
+  required
 }) {
   return (
     <Autocomplete
@@ -16,7 +17,7 @@ function SearchDropDown({
       id="combo-box-demo"
       options={dropDownList}
       sx={{ width: 300 }}
-      renderInput={(params) => <TextField {...params} label="skills" />}
+      renderInput={(params) => <TextField required={required} {...params} label="skills" />}
     />
   );
 }

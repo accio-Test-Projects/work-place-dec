@@ -43,6 +43,7 @@ function CustomDropDown({
   dropDownList,
   val,
   onChange,
+  required,
 }) {
   const theme = useTheme();
 
@@ -56,6 +57,7 @@ function CustomDropDown({
       <FormControl sx={{ m: 1, width: 300 }}>
         <InputLabel id="demo-multiple-name-label">Name</InputLabel>
         <Select
+        required={required}
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           value={val}
