@@ -20,7 +20,7 @@ function EmployerOnboarding() {
   const [values, setValues] = useState({
     companyName: "",
     companyWebsite: "",
-    companyEmail: "",
+    companyEmail:JSON.parse(localStorage.getItem("user")).email,
     companyPhone: "",
     industryType: "",
     noOfEmployees: "",
@@ -114,6 +114,7 @@ function EmployerOnboarding() {
             size="small"
             type="email"
             required
+            disabled
             fullWidth
             value={values.companyEmail}
             onChange={(e) =>

@@ -14,7 +14,7 @@ import SearchDropDown from "../../../../common/SearchDropDown";
 import CancelRoundedIcon from "@mui/icons-material/CancelRounded";
 import { v4 as uuidv4 } from "uuid";
 import { Notification } from "../../../../../utils/Notification";
-import { setDoc, doc } from "firebase/firestore";
+import { setDoc, doc, getDoc } from "firebase/firestore";
 import { db } from "../../../../../firebasConfig";
 import RTE from "../../../../common/RTE";
 
@@ -68,15 +68,24 @@ function JobForm({ setMobileSectionState, selectedJob }) {
         );
         Notification({ message: "Job Updated Successfully", type: "success" });
       } else {
+        let conpanyInfo = {};
+        await getDoc(doc(db, "userInfo", employer_id)).then((docSnap) => {
+          conpanyInfo = docSnap.data();
+        });
+
         await setDoc(doc(db, "jobs", job_id), {
           job_id,
           employer_id,
+          company_name: conpanyInfo.companyName,
+          company_logo: conpanyInfo.logo,
+          companyTagLine: conpanyInfo.companyTagline,
           ...jobData,
           createdAt: new Date(),
         });
         Notification({ message: "Job Posted Successfully", type: "success" });
       }
     } catch (err) {
+      console.log(err);
       Notification({ message: "something went wrong", type: "error" });
     }
   };

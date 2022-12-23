@@ -1,0 +1,50 @@
+.table-head{
+  display: flex;
+  gap: 10px;
+    align-items: center;
+    background-color: #fff;
+    width: 90%;
+    /* max-width: 1100px; */
+    padding: 20px;
+    margin: 20px auto;
+    box-shadow: 0px 4px 8px rgb(0 0 0 / 20%);
+    border-radius: 15px;
+
+}
+
+.table-head div{
+  width: 25%;
+  font-weight: 600;
+  font-size: clamp(12px, 1.5vw, 20px);
+  color: #000000;
+  text-align: center;
+}
+.table-row{
+  gap: 10px;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  padding: 20px;
+  width: 90%;
+  border-radius: 20px;
+  margin: 20px auto;
+}
+
+.table-row div{
+  width: 25%;
+  font-weight: 500;
+  font-size: clamp(12px, 1.5vw, 20px);
+  color: #000000;
+  text-align: center;
+}
+
+.resume-btn{
+  background: #7F31D2;
+  border-radius: 8px;
+  color: #fff;
+  padding: 5px;
+  font-size: 11px;
+  text-transform: capitalize;
+  text-decoration: none;
+  font-weight: 900;
+}

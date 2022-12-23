@@ -1,0 +1,40 @@
+.jobCard{
+  background: #FFFFFF;
+    box-shadow: 0px 4px 8px rgb(0 0 0 / 20%);
+    border-radius: 10px;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+}
+.jobCard h1{
+  font-size:clamp(20px, 2.1vw, 32px);
+  font-weight: 500;
+  margin: 0px;
+}
+.jobCard h2{
+  font-weight: 400;
+    font-size: clamp(14px, 1.5vw, 20px);
+}
+
+.jobCard_details{
+  border: 1px solid #D4D4D4;
+  border-radius: 7px;
+  padding: 5px;
+  margin: 5px;
+  margin-top: 10px;
+  text-align: left;
+  font-weight: 400;
+font-size: clamp(14px, 1.5vw, 18px);
+color: #000000;
+}
+.apply-btn{
+  background: #26D7AB;
+  border-radius: 5px;
+  color: #FFFFFF;
+  border: none;
+  padding: 9px;
+  min-width: 100px;
+  width: 100%;
+
+}
+/* clamp(min,ratio((max/screenWidth)*100 vw),max) */
