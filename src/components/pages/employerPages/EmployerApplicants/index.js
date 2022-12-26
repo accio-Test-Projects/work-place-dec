@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { query, where, collection, onSnapshot } from "firebase/firestore";
+import { query, where, collection, onSnapshot, setDoc } from "firebase/firestore";
 import { db } from "../../../../firebasConfig";
 import CommonTable from "../../../common/CommonTable";
+import { doc, deleteDoc } from "firebase/firestore";
+import {Notification} from '../../../../utils/Notification'
+import { v4 as uuid } from 'uuid';
 
 const columns = [
   {
@@ -74,8 +77,61 @@ function EmployerApplicants() {
     fetch();
   }, []);
 
-  function handleClick(action, data) {
-    console.log(action, "----", data);
+  async function  handleClick (action, data) {
+
+    if(action === "accept"){
+      //update the status of the application to "accepted"
+
+      // a update call to the application collection
+      setDoc(doc(
+        db, "applications", data.application_id
+      ),{
+        status: "accepted"
+      },{merge: true})
+      Notification({
+        type: "success",
+        message: "Application Accepted",
+      })
+      // initialize a conversation between the employer and the candidate
+
+      //1. initialize last message in the last_message collection
+      // hey (candidate name) we  have accepted your application for the job (job title)
+      //2. initialize the conversation in the conversations collection
+      // hey (candidate name) we  have accepted your application for the job (job title)
+
+      let conversation_id = uuid();
+      let last_message= `Hey ${data.candidate_name} we have accepted your application for the job ${data.jobTitle}`;
+      let last_message_id = uuid();
+      let conversation_doc_id = uuid();
+      await setDoc(doc(db, "last_messages", last_message_id),{
+        last_message,
+        createdAt: new Date(),
+        conversation_id: conversation_id,
+        employer_id: employerId,
+        candidate_id: data.candidate_id,
+        company_name: data.company_name,
+        candidate_name: data.candidate_name,
+        jobTitle: data.jobTitle,
+      }
+      )
+      
+      await setDoc(doc(db, "conversations",conversation_doc_id),{
+        conversation_id,
+        message:last_message,
+        createdAt: new Date(),
+        by: "employer",
+        user_id: employerId,
+      })
+    }
+    else if(action === "reject"){
+      //delete the application from the collection
+      console.log(data)
+      deleteDoc(doc(db, "applications", data.application_id));
+      Notification({
+        type: "success",
+        message: "Application Rejected",
+      })
+    }
   }
 
   return (

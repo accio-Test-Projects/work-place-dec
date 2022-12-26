@@ -1,3 +1,3 @@
-export const Notification = ( {message} ) => {
+export const Notification = ( {message,type=null} ) => {
   alert(message);
 };

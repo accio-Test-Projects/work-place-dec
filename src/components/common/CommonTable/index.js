@@ -110,7 +110,10 @@ function CommmonTable({ data, columns,handleClick=null }) {
                   {
                      column.childrenAction.map((item)=>{
                       return(
+                        // row.status
+                        //row['status']
                         <button
+                        disabled={row['status']==='accepted'?true:false}
                         onClick={()=>handleClick(item.action,row)}
                         >{item.label}</button>
                       )
