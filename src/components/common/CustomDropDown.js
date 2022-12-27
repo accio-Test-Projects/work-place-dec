@@ -55,8 +55,9 @@ function CustomDropDown({
 
   return (
     <div>
-      <FormControl sx={{ m: 1, width: 300 }}>
+      <FormControl sx={{  width: "100%" }}>
         <Select
+        size='small'
         disabled={disabled}
         required={required}
           id="demo-simple-select"

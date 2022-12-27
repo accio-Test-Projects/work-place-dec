@@ -11,6 +11,9 @@ function SearchDropDown({
 }) {
   return (
     <Autocomplete
+
+    fullWidth
+    size='small'
     disabled={disabled}
       disablePortal
       onChange={(event, newValue) => {
@@ -18,8 +21,8 @@ function SearchDropDown({
       }}
       id="combo-box-demo"
       options={dropDownList}
-      sx={{ width: 300 }}
-      renderInput={(params) => <TextField required={required} {...params} label="skills" />}
+      // sx={{ width: 300 }}
+      renderInput={(params) => <TextField fullWidth required={required} {...params}  />}
     />
   );
 }

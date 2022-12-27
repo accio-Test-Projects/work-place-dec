@@ -50,10 +50,10 @@ function EmployerOnboarding() {
     try {
       await setDoc(doc(db, "userInfo", uid), {
         ...values,
-        type: "employer",
+        type: "candidate",
       });
       Notification({ message: "profile created successfully" });
-      navigate("/candidate/profile")
+      navigate("/candidate/profile");
     } catch (err) {
       console.log(err);
       Notification({ message: "something went wrong" });
@@ -123,7 +123,7 @@ function EmployerOnboarding() {
         <Grid item xs={12} sm={6}>
           <label className="field-label">Email</label>
           <TextField
-          disabled
+            disabled
             size="small"
             type="email"
             required
@@ -172,6 +172,8 @@ function EmployerOnboarding() {
         <Grid item xs={12} md={6}>
           <label className="text-label">skills</label>
           <SearchDropDown
+            fullWidth
+            size="small"
             required={true}
             dropDownList={SkillsDownList}
             onChange={(data) => handleSkillsInput(data)}

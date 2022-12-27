@@ -6,6 +6,7 @@ import { GoogleAuthProvider,signInWithPopup } from "firebase/auth";
 import {useNavigate} from 'react-router-dom'
 function AuthenticationPage({ type }) {
 const navigate=useNavigate()
+
 const signIn = () => {
   const provider = new GoogleAuthProvider();
 
