@@ -112,6 +112,7 @@ function EmployerApplicants() {
       let conversation_doc_id = uuid();
       await setDoc(doc(db, "last_messages", last_message_id), {
         last_message,
+        last_message_id,
         createdAt: new Date(),
         conversation_id: conversation_id,
         employer_id: employerId,
@@ -127,6 +128,7 @@ function EmployerApplicants() {
         createdAt: new Date(),
         by: "employer",
         user_id: employerId,
+        conversation_doc_id,
       });
     } else if (action === "reject") {
       //delete the application from the collection

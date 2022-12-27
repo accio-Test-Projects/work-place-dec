@@ -1,0 +1,22 @@
+.container{
+  min-height: 80vh;
+  background: #ebebeb;
+  overflow: scroll;
+  border-radius: 10px;
+
+}
+
+.selected-card{
+  background: #FFFFFF;
+    border-radius: 10px;
+    padding: 1px 10px;
+    margin: 10px;
+    border-left: 4px solid #7F31D2;
+    border-right: 4px solid #7F31D2;
+}
+
+.card{
+    border-radius: 10px;
+    padding: 1px 10px;
+    margin: 10px;
+}

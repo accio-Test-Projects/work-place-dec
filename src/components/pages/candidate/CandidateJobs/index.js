@@ -63,7 +63,7 @@ function CandidateJobs() {
       });
       return;
     } else {
-
+try{
       // fetch the candidate info from the candidate collection
       const candidate = await getDoc(doc(db,'userInfo',candidate_id))
       console.log(candidate.data(),'ssss')
@@ -85,11 +85,16 @@ function CandidateJobs() {
         candidate_name
       });
     }
+    catch(err){
+      console.log(err)
+    }
+    }
 
     Notification({
       message: "Applied Successfully",
       type: "success",
     });
+    
   };
   return (
     <div>

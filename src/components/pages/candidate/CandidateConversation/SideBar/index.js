@@ -10,7 +10,7 @@ function Sidebar({handleClick,currentSelectedMessage}) {
   const fetchData = async () => {
     const q = query(
       collection(db, "last_messages"),
-      where("employer_id", "==", currentUser.uid)
+      where("candidate_id", "==", currentUser.uid)
     );
     const unsubscribe = await onSnapshot(q, (querySnapshot) => {
       let docs = [];

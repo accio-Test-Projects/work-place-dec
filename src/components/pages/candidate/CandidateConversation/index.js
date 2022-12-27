@@ -5,13 +5,13 @@ import React, { useEffect, useState } from "react";
 import MessageArea from "./MessageArea";
 import SideBar from "./SideBar";
 
-function EmployerConversation() {
+function CandidateConversation() {
   const [allConversations, setAllConversations] = useState(null);
   const [selectedSectionMobile, setSelectedSectionMobile] = useState("sidebar");
   const [currentSelectedMessage, setCurrentSelectedMessage] = useState(null);
   const handleClick = async (message) => {
     console.log(message);
-    setCurrentSelectedMessage(message);
+    setCurrentSelectedMessage(message)
     // fetch all the docs from the conversation collection,
     //  where the conversation id is equal to the conversation id of the message
     // subscribe to it
@@ -30,19 +30,18 @@ function EmployerConversation() {
   };
 
   useEffect(() => {
-    if (allConversations) {
-      setSelectedSectionMobile("messageArea");
+    if(allConversations){
+      setSelectedSectionMobile("messageArea")
     }
   }, [allConversations]);
 
   return (
-    <Grid
-      container
-      spacing={2}
-      sx={{
-        maxWidth: "95%",
-        margin: "20px auto",
-      }}
+    <Grid container spacing={2}
+    sx={{
+      maxWidth: "95%",
+      margin: "20px auto",
+      
+    }}
     >
       <Grid
         sx={{
@@ -55,10 +54,7 @@ function EmployerConversation() {
         xs={12}
         md={3}
       >
-        <SideBar
-          currentSelectedMessage={currentSelectedMessage}
-          handleClick={handleClick}
-        />
+        <SideBar currentSelectedMessage={currentSelectedMessage} handleClick={handleClick} />
       </Grid>
       <Grid
         sx={{
@@ -71,16 +67,13 @@ function EmployerConversation() {
         xs={12}
         md={9}
       >
-        {currentSelectedMessage && (
-          <MessageArea
-            setSelectedSectionMobile={setSelectedSectionMobile}
-            currentSelectedMessage={currentSelectedMessage}
-            allConversations={allConversations}
-          />
-        )}
+        <MessageArea
+        setSelectedSectionMobile={setSelectedSectionMobile}
+        currentSelectedMessage={currentSelectedMessage}
+        allConversations={allConversations} />
       </Grid>
     </Grid>
   );
 }
 
-export default EmployerConversation;
+export default CandidateConversation;
