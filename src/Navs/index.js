@@ -1,4 +1,4 @@
-import * as React from "react";
+import React , {useContext}from "react";
 import {
   BrowserRouter as Router,
   Outlet,
@@ -21,22 +21,35 @@ import EmployerApplicants from "../components/pages/employerPages/EmployerApplic
 import EmployerConversation from "../components/pages/employerPages/EmployerConversation";
 import EmployerHoc from "../HOC/EmployerHoc";
 import CandidateHoc from "../HOC/CandidateHoc";
-
+import {userContext} from '../context/userContext'
 function Navs() {
+  const [state,dispatch]=useContext(userContext)
+  const isAuth  =state.isAuth;
+  const userInfo=state.userInfo;
   const ProtectedCandidateRoutes = () => {
-    if (false) {
+    if (isAuth&&userInfo?.type==='candidate') {
+      console.log(isAuth)
       return <Outlet />;
     } else {
       return <Navigate to="/candidate/auth" />;
     }
   };
   const ProtectedEmployerRoutes = () => {
-    if (false) {
+    if (isAuth&&userInfo?.type==='employer') {
       return <Outlet />;
     } else {
       return <Navigate to="/employer/auth" />;
     }
   };
+
+  const OnboardingProtectedRoute=()=>{
+    if(isAuth){
+      return <Outlet/>
+    }
+    else{
+      return <Navigate to="/" />
+    }
+  }
   return (
     <Router>
       <Routes>
@@ -45,8 +58,11 @@ function Navs() {
           path="/candidate/auth"
           element={<AuthenticationPage type="candidate" />}
         />
-        {/* <Route element={<ProtectedCandidateRoutes />}> */}
-        <Route path="/candidate/onboarding" element={<CandidateOnboarding />} />
+        <Route element={<OnboardingProtectedRoute/>}>
+          <Route path="/candidate/onboarding" element={<CandidateOnboarding />} />
+          </Route>
+        <Route element={<ProtectedCandidateRoutes />}>
+       
         <Route
           path="/candidate/profile"
           element={
@@ -79,17 +95,17 @@ function Navs() {
             </CandidateHoc>
           }
         />
-        {/* </Route> */}
+        </Route>
       </Routes>
       <Routes>
         <Route
           path="/employer/auth"
           element={<AuthenticationPage type="employer" />}
         />
-        {/* <Route element={<ProtectedEmployerRoutes />}> */}
-
-        <Route path="/employer/onboarding" element={<EmployerOnboarding />} />
-
+         <Route element={<OnboardingProtectedRoute/>}>
+          <Route path="/employer/onboarding" element={<EmployerOnboarding />} />
+         </Route>
+        <Route element={<ProtectedEmployerRoutes />}>
         <Route
           path="/employer/profile"
           element={
@@ -122,9 +138,10 @@ function Navs() {
             </EmployerHoc>
           }
         />
+          </Route>
       </Routes>
 
-      {/* </Route> */}
+    
     </Router>
   );
 }

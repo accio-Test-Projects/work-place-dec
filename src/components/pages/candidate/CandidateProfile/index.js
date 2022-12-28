@@ -1,7 +1,7 @@
 import { Button, Grid, TextField } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { doc, getDoc, setDoc } from "firebase/firestore";
-import { db } from "../../../../firebasConfig";
+import { db,auth } from "../../../../firebasConfig";
 import "./candidateOnboarding.css";
 import { Notification } from "../../../../utils/Notification";
 import loadingimg from "../.../../../../../acessts/loading.gif";
@@ -16,9 +16,11 @@ import {
   SkillsDownList,
   yearsOfExperience,
 } from "../../../../constants";
+import {userContext} from '../../../../context/userContext'
 
 function CandidateProfile() {
   const navigate = useNavigate();
+  const [state,dispatch]=useContext(userContext)
   const [uploadLoading, setUploadLoading] = useState(0);
   const [loading, setLoading] = useState(false);
   const [disableFields, setDisableFields] = useState(true);
@@ -126,6 +128,12 @@ function CandidateProfile() {
   const makeEditable = () => {
     setDisableFields(prevState => !prevState);
   };
+  const logout = () => {
+    auth.signOut();
+    dispatch({type:"LOGOUT"})
+    navigate("/candidate/auth");
+  }
+
   return (
     <div>
       {loading ? (
@@ -147,7 +155,9 @@ function CandidateProfile() {
                   {" "}
                   {disableFields ? "Edit" : "save"}
                 </Button>
-                <Button>Logout</Button>
+                <Button
+                onClick={logout}
+                >Logout</Button>
               </div>
             </Grid>
             <Grid item xs={12} sm={6}>

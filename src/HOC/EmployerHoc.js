@@ -13,6 +13,8 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { useNavigate } from "react-router-dom";
+import { DarkmodeContext } from "../context/DarkmodeContext";
+import ModeToggle from "../components/common/ModeToggle";
 
 const pages = [
   {
@@ -37,6 +39,7 @@ const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 function EmployerHoc({children}) {
   const navigate = useNavigate();
+  const [state, dispatch] = React.useContext(DarkmodeContext);
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -62,7 +65,12 @@ function EmployerHoc({children}) {
   return (
     <div>
     <AppBar position="sticky">
-      <Container maxWidth="xl">
+      <Container
+       sx={{
+        color: state.shades.secondary,
+        backgroundColor: state.shades.primary,
+      }}
+      maxWidth="xl">
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
           <Typography
@@ -114,7 +122,11 @@ function EmployerHoc({children}) {
             >
               {pages.map((page) => (
                 <MenuItem key={page.name} onClick={() => handleNavigate(page.path)}>
-                  <Typography textAlign="center">{page.name}</Typography>
+                  <Typography
+                   sx={{
+                    color: state.shades.secondary,
+                  }}
+                  textAlign="center">{page.name}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -143,7 +155,7 @@ function EmployerHoc({children}) {
               <Button
                 key={page.name}
                 onClick={() => handleNavigate(page.path)}
-                sx={{ my: 2, color: "white", display: "block" }}
+                sx={{ my: 2,  color: state.shades.secondary, display: "block" }}
               >
                 {page.name}
               </Button>
@@ -151,33 +163,12 @@ function EmployerHoc({children}) {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
+            <Tooltip title="mode">
+            
+              <ModeToggle />
+            
             </Tooltip>
-            <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
+           
           </Box>
         </Toolbar>
       </Container>

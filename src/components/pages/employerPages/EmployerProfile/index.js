@@ -1,8 +1,8 @@
 import { Label } from "@mui/icons-material";
 import { Button, Divider, Grid, TextField } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { doc, setDoc, getDoc } from "firebase/firestore";
-import { db } from "../../../../firebasConfig";
+import { auth, db } from "../../../../firebasConfig";
 import "./employerProfile.css";
 import { Notification } from "../../../../utils/Notification";
 import { useNavigate } from "react-router-dom";
@@ -15,8 +15,10 @@ import {
 import { storage } from "../../../../firebasConfig";
 import { async } from "@firebase/util";
 import loadingimg from "../.../../../../../acessts/loading.gif";
+import {userContext} from '../../../../context/userContext'
 
 function EmployerProfile() {
+  const [state,dispatch]=useContext(userContext)
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("user"));
   const uid = user.uid;
@@ -141,6 +143,11 @@ function EmployerProfile() {
       }
     }
   };
+  const logout = () => {
+    auth.signOut();
+    dispatch({type:"LOGOUT"})
+    navigate("/employer/auth");
+  }
   return (
     <>
       {loading ? (
@@ -220,7 +227,9 @@ function EmployerProfile() {
                       {" "}
                       {disableField ? "Edit" : "save"}
                     </Button>
-                    <Button>Logout</Button>
+                    <Button
+                    onClick={logout}
+                    >Logout</Button>
                   </div>
                 </Grid>
               </Grid>
